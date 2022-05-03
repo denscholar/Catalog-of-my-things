@@ -12,11 +12,14 @@ class Item
       @genre = nil
     end
 
-      
       def can_be_archived?
+        actual_year = Date.today.year
+        publishing_year = Date.parse(@publish_date).year
+        actual_year - publishing_year > 10
       end
     
       def move_to_archive
+        @archived = true if can_be_archived?
       end
     
       private :can_be_archived?
