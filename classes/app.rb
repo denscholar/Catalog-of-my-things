@@ -1,12 +1,12 @@
 class App
   def greetings
     puts '*****************************************'
-    Puts 'Welcome to the catalog of my things'
+    puts 'Welcome to the catalog of my things'
     puts '*****************************************'
   end
 
   def options_list
-    Puts "Please select 1 option below
+    puts "Please select 1 option below
             1 - List all books
             2 - List all music albums
             3 - List all games
@@ -18,32 +18,48 @@ class App
             9 - Add a game"
   end
 
+  def option1(option)
+    case option
+    when 5
+      puts 'List all labels (e.g "Gift", "New")'
+    when 6
+      puts 'List all authors (e.g "Stephan King")'
+    when 7
+      puts 'Add a book'
+    when 8
+      puts 'Add music album'
+    when 9
+      puts 'Add a game'
+    end
+  end
+
+  def option2(option)
+    case option
+    when 5
+      puts 'List all labels (e.g "Gift", "New")'
+    when 6
+      puts 'List all authors (e.g "Stephan King")'
+    when 7
+      puts 'Add a book'
+    when 8
+      puts 'Add music album'
+    when 9
+      puts 'Add a game'
+    end
+  end
+
   def start
     greetings
 
     loop do
-      list_options
+      options_list
       option = gets.chomp.to_i
-      case option
-      when 1
-        puts 'List all books'
-      when 2
-        puts 'List all music albums'
-      when 3
-        puts 'List all games'
-      when 4
-        puts 'List all genres (e.g "Comedy", "Thriller")'
-      when 5
-        puts 'List all labels (e.g "Gift", "New")'
-      when 6
-        puts 'List all authors (e.g "Stephan King")'
-      when 7
-        puts 'Add a book'
-      when 8
-        puts 'Add music album'
-      when 9
-        puts 'Add a game'
+      if option.positive? && option < 5
+        option1(option)
+      elsif option >= 5 && option <= 9
+        option2(option)
       else
+        puts 'Invalid choice. Please try again'
         break
       end
     end
