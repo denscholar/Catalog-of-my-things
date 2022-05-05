@@ -7,7 +7,4 @@ class Genre
     @id = id
     @items = []
   end
-
-  def add_item()
-  end
 end
