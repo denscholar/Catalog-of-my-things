@@ -34,7 +34,9 @@ class App
             6 - List all authors (e.g 'Stephan King')
             7 - Add a book
             8 - Add music album
-            9 - Add a game"
+            9 - Add a game
+            To exit press any other key"
+            
   end
 
   def option1(option)
