@@ -7,4 +7,9 @@ class Genre
     @id = id
     @items = []
   end
+
+  def add_item(item)
+    @item << item unless @item.include?(item)
+    item.genre = self
+  end
 end
