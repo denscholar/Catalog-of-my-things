@@ -22,5 +22,4 @@ module BooksData
     end
     File.write('./data/books.json', JSON.generate(data))
   end
-
 end

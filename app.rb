@@ -36,7 +36,6 @@ class App
             8 - Add music album
             9 - Add a game
             To exit press any other key"
-            
   end
 
   def option1(option)
