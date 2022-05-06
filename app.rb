@@ -99,16 +99,16 @@ class App
   end
 
   def add_new_book
-    print 'Please, enter the book title: '
+    print "Please, enter the book's title: "
     title = gets.chomp
 
-    print 'Please, enter the book publisher: '
+    print "Please, enter the book's publisher: "
     publisher = gets.chomp
 
-    print 'Please, enter the book cover state: '
+    print "Please, enter the book's cover state: "
     cover_state = gets.chomp
 
-    print 'Published Date [Enter date in format (yyyy-mm-dd)]: '
+    print 'Published Date [Enter date in format (mm-dd-yyy)]: '
     publish_date = gets.chomp
     return unless publish_date
 
