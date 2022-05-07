@@ -27,14 +27,14 @@ Clone this repository:
 
 - To get started, In the root directory run:
    * `gem install bundler`
-   * Then run:`bundle install`
-   * Then `ruby main.rb
+   * Then run: `bundle install`
+   * Then `ruby main.rb`
 
 
 ### Run tests
 There are 2 options :
 - To run All the tests:
-   * Open the terminal and run `rspec . `
+   * Open the terminal and run `rspec . ` (please don't forget the dot after rspec)
 - To run one file
    * Open the terminal and run `rspec spec spec/filename.rb`
 
