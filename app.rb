@@ -88,6 +88,15 @@ class App
     end
   end
 
+  def list_games
+    puts 'There are no gamess yet!' if @games.empty?
+    @games.each do |game|
+      puts "Multiplayer : #{game.multiplayer},
+      last date played : #{game.last_played_at},
+      publishing : #{game.publish_date}"
+    end
+  end
+
   def add_new_game
     print "It is a multiplayer game: "
     multiplayer = gets.chomp.to_s.casecmp('true').zero?
