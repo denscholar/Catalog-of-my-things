@@ -18,9 +18,9 @@ class App
     @games = read_games
     @books = read_books
     @labels = read_labels
-    @author = read_authors
-    @genre = read_genre
-    @music_album = load_music_album
+    @authors = read_authors
+    @genres = read_genre
+    @music_albums = load_music_album
   end
 
   def greetings
@@ -124,6 +124,13 @@ class App
     puts 'There are no labels yet!' if @labels.empty?
     @labels.each do |label|
       puts "ID: #{label['id']}, Title: #{label['title']}, Color: #{label['color']}"
+    end
+  end
+
+  def list_genress
+    puts 'There are no genres yet!' if @genres.empty?
+    @genres.each do |genre|
+      puts "Genre: #{genre['name']}}"
     end
   end
 
