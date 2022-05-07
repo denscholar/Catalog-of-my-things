@@ -12,7 +12,7 @@ describe Book do
     it "should return true if the parent's method returns true" do
       expect(@book.move_to_archive).to be true
     end
-    it 'should return false otherwise' do
+    it 'should return nil otherwise' do
       good_book = Book.new('name', 'publisher', 'good', Date.new(2015, 2, 3).to_s)
       expect(good_book.move_to_archive).to be nil
     end
