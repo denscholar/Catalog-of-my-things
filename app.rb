@@ -11,11 +11,16 @@ require_relative 'storage/label_storage'
 class App
   include BooksData
   include LabelsData
+  include MusicAlbumData
+  include GenreData
 
   def initialize
-    # @games = read_games
+    @games = read_games
     @books = read_books
     @labels = read_labels
+    @author = read_authors
+    @genre = read_genre
+    @music_album = load_music_album
   end
 
   def greetings
