@@ -9,6 +9,11 @@ class Label
     @id = id
   end
 
+  def label=(label)
+    @label = label
+    label.items.push(self) unless label.items.include?(self)
+  end
+
   def add_item(item)
     @items.push(item) unless @items.include?(item)
     item.label = self

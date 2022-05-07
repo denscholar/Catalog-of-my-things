@@ -9,6 +9,11 @@ class Author
     @items = []
   end
 
+  def author=(author)
+    @author = author
+    author.items.push(self) unless author.items.include?(self)
+  end
+
   def add_item(item)
     @items.push(item) unless @items.include?(item)
     item.author = self
