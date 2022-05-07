@@ -3,21 +3,20 @@ require 'json'
 
 module MusicAlbumData
   def load_music_album
-    if File.exist?('./data/music_album.json') && File.read('./data/music_album.json') != ''
-      JSON.parse(File.read('./data/music_album.json')).each do |album|
-        MusicAlbum.new(album['published'], album['archived'],
-                       album['spotify'], id: album['id'])
+    file = './data/music_album.json'
+    data = []
+    if File.exist?(file) && File.read(file) != ''
+      JSON.parse(File.read(file)).each do |album|
+        data.push(MusicAlbum.new(album['publish_date'], album['on_spotify']))
       end
-    else
-      []
     end
+    data
   end
 
   def save_music_album
     data = []
-    @list_albums.each do |album|
-      data.push({ genre: album.genre.name, published: album.publish_date,
-                  archived: album.archived, spotify: album.on_spotify, id: album.id })
+    @music_albums.each do |album|
+      data.push({ publish_date: album.publish_date, on_spotify: album.on_spotify })
     end
     File.write('./data/music_album.json', JSON.generate(data))
   end

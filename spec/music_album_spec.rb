@@ -2,7 +2,7 @@ require_relative '../classes/music_album'
 
 describe MusicAlbum do
   before(:each) do
-    @album = MusicAlbum.new('2010-10-10', true, true)
+    @album = MusicAlbum.new('2010-10-10', true)
   end
 
   context 'Create a new Music Album' do
