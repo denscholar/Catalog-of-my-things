@@ -1,5 +1,4 @@
 require_relative '../classes/game'
-require 'yaml'
 
 describe 'Game' do
   context 'when create a new game' do
