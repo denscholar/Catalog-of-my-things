@@ -67,7 +67,7 @@ class App
     when 5
       list_labels
     when 6
-      puts "List all authors (e.g 'Stephan King')"
+      list_authors
     when 7
       add_new_book
     when 8
@@ -95,7 +95,7 @@ class App
   end
 
   def list_games
-    puts 'There are no gamess yet!' if @games.empty?
+    puts 'There are no games yet!' if @games.empty?
     @games.each do |game|
       puts "Multiplayer : #{game.multiplayer},
       last date played : #{game.last_played_at},
@@ -103,26 +103,10 @@ class App
     end
   end
 
-  def add_new_game
-    print "It is a multiplayer game: "
-    multiplayer = gets.chomp.to_s.casecmp('true').zero?
-
-    print "Please, enter the last date the game was played (mm-dd-yyy)"
-    last_played_at, = gets.chomp
-
-    print 'Published Date [Enter date in format (mm-dd-yyy)]: '
-    publish_date = gets.chomp
-    return unless publish_date
-
-    @games.push(Game.new(multiplayer, last_played_at, publish_date))
-    save_games(@games)
-    puts 'Game created successfully'
-  end
-
   def list_books
     puts 'There are no books yet! Please add books.' if @books.empty?
     @books.each do |book|
-      puts "Title: #{book.title}, Publish Date: #{book.publish_date}, cover_state: #{book.cover_state}"
+      puts "Title: #{book.title}, Publish Date: #{book.publish_date}, cover state: #{book.cover_state}"
     end
   end
 
@@ -132,7 +116,7 @@ class App
       puts "First name: #{author.first_name}, last name : #{last.first_name}}"
     end
   end
-  
+
   def list_genres
     puts 'There are no genres yet!' if @genres.empty?
     @genres.each do |genre|
@@ -140,23 +124,65 @@ class App
     end
   end
 
-  def add_new_album
-    print 'Published Date [Enter date in format (mm-dd-yyy)]: '
+  def list_labels
+    puts 'There are no labels yet!' if @labels.empty?
+    @labels.each do |label|
+      puts "Title : #{label.title}, color : #{label.color}"
+    end
+  end
+
+  def list_albums
+    puts 'There are no Albums yet!' if @music_albums.empty?
+    @music_albums.each do |album|
+      puts "Publish date: #{album.publish_date}, On Spotify : #{album.on_spotify}"
+    end
+  end
+
+  def add_new_book
+    print "Please, enter the book's title: "
+    title = gets.chomp
+
+    print "Please, enter the book's publisher: "
+    publisher = gets.chomp
+
+    print "Please, enter the book's cover state: "
+    cover_state = gets.chomp
+
+    print 'Published Date [Enter date in format (mm-dd-yyyy)]: '
     publish_date = gets.chomp
     return unless publish_date
 
-    print "This album is on Spotify [Enter answer in format true / false: "
+    @books.push(Book.new(title, publisher, cover_state, publish_date))
+    save_books
+    puts 'Book created successfully'
+  end
+
+  def add_new_game
+    print "It is a multiplayer game [Enter answer in format true / false]: "
+    multiplayer = gets.chomp.to_s.casecmp('true').zero?
+
+    print "Please, enter the last date the game was played (mm-dd-yyyy)"
+    last_played_at, = gets.chomp
+
+    print 'Published Date [Enter date in format (mm-dd-yyyy)]: '
+    publish_date = gets.chomp
+    return unless publish_date
+
+    @games.push(Game.new(multiplayer, last_played_at, publish_date))
+    save_games(@games)
+    puts 'Game created successfully'
+  end
+
+  def add_new_album
+    print 'Published Date [Enter date in format (mm-dd-yyyy)]: '
+    publish_date = gets.chomp
+    return unless publish_date
+
+    print "This album is on Spotify [Enter answer in format true / false] :"
     on_spotify = gets.chomp.to_s.casecmp('true').zero?
 
     @music_albums.push(MusicAlbum.new(publish_date, on_spotify))
     save_music_album
     puts 'Album created successfully'
-  end
-
-  def list_albums
-    puts 'There are no genres yet!' if @music_albums.empty?
-    @music_albums.each do |album|
-      puts "Publish date: #{album.publish_date}, On Spotify : #{album.on_spotify}}"
-    end
   end
 end
