@@ -126,6 +126,13 @@ class App
     end
   end
 
+  def list_authors
+    puts 'There are no @authors yet!' if @music_albums.empty?
+    @authors.each do |author|
+      puts "First name: #{author.first_name}, last name : #{last.first_name}}"
+    end
+  end
+  
   def list_genres
     puts 'There are no genres yet!' if @genres.empty?
     @genres.each do |genre|
