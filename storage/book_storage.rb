@@ -4,7 +4,7 @@ require 'date'
 
 module BooksData
   def read_books
-    file = '../data/books.json'
+    file = './data/books.json'
     data = []
     if File.exist?(file) && File.read(file) != ''
       JSON.parse(File.read(file)).each do |element|
