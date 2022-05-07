@@ -36,14 +36,11 @@ describe Book do
     it 'can be read' do
       expect(@book.publisher).to eql('publisher')
     end
- end
+  end
 
   context '#cover_state' do
     it 'can be read' do
       expect(@book.cover_state).to eql('bad')
     end
-
   end
 end
-
-
