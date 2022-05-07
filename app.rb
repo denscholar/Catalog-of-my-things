@@ -54,11 +54,11 @@ class App
     when 1
       list_books
     when 2
-      puts 'List all music albums'
+      list_albums
     when 3
-      puts 'List all games'
+      list_games
     when 4
-      puts "List all genres (e.g 'Comedy', 'Thriller')"
+      list_genres
     end
   end
 
@@ -71,9 +71,9 @@ class App
     when 7
       add_new_book
     when 8
-      puts 'Add music album'
+      add_new_album
     when 9
-      puts 'Add a game'
+      add_new_game
     end
   end
 
@@ -126,36 +126,16 @@ class App
     end
   end
 
-  def list_labels
-    puts 'There are no labels yet!' if @labels.empty?
-    @labels.each do |label|
-      puts "ID: #{label['id']}, Title: #{label['title']}, Color: #{label['color']}"
-    end
-  end
 
-  def list_genress
+
+
+  def list_genres
     puts 'There are no genres yet!' if @genres.empty?
     @genres.each do |genre|
-      puts "Genre: #{genre['name']}}"
+      puts "Genre: #{genre.name}}"
     end
   end
 
-  def add_new_book
-    print "Please, enter the book's title: "
-    title = gets.chomp
 
-    print "Please, enter the book's publisher: "
-    publisher = gets.chomp
 
-    print "Please, enter the book's cover state: "
-    cover_state = gets.chomp
-
-    print 'Published Date [Enter date in format (mm-dd-yyy)]: '
-    publish_date = gets.chomp
-    return unless publish_date
-
-    @books.push(Book.new(title, publisher, cover_state, publish_date))
-    save_books
-    puts 'Book created successfully'
-  end
 end
