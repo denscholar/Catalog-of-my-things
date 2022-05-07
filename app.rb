@@ -88,6 +88,22 @@ class App
     end
   end
 
+  def add_new_game
+    print "It is a multiplayer game: "
+    multiplayer = gets.chomp.to_s.casecmp('true').zero?
+
+    print "Please, enter the last date the game was played (mm-dd-yyy)"
+    last_played_at, = gets.chomp
+
+    print 'Published Date [Enter date in format (mm-dd-yyy)]: '
+    publish_date = gets.chomp
+    return unless publish_date
+
+    @games.push(Game.new(multiplayer, last_played_at, publish_date))
+    save_games(@games)
+    puts 'Game created successfully'
+  end
+
   def list_books
     puts 'There are no books yet! Please add books.' if @books.empty?
     @books.each do |book|
