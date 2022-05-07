@@ -1,6 +1,5 @@
 require_relative '../classes/book'
 
-
 module BooksData
   def read_books
     file = './data/books.json'
