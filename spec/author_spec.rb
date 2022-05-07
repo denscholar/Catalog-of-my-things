@@ -1,4 +1,5 @@
 require_relative '../classes/author'
+require 'yaml'
 
 describe 'Author' do
   context 'when create a new author' do
@@ -19,7 +20,7 @@ describe 'Author' do
       author = Author.new('Dennis', 'Akagha')
       item = Item.new('12/05/2018', false)
       author.add_item(item)
-      expect(author.item).to include(item)
+      expect(author.items).to include(item)
       expect(item.author).to be(author)
     end
   end
