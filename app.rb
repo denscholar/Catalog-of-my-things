@@ -5,21 +5,27 @@ require_relative 'classes/genre'
 require_relative 'classes/item'
 require_relative 'classes/label'
 require_relative 'classes/music_album'
+require_relative 'storage/author_data'
 require_relative 'storage/book_storage'
+require_relative 'storage/game_data'
+require_relative 'storage/genre_storage'
 require_relative 'storage/label_storage'
+require_relative 'storage/music_album_storage'
 
 class App
+  include AuthorsData
   include BooksData
+  include GameData
+  include GenreData
   include LabelsData
   include MusicAlbumData
-  include GenreData
 
   def initialize
     @games = read_games
     @books = read_books
     @labels = read_labels
     @authors = read_authors
-    @genres = read_genre
+    @genres = load_genres
     @music_albums = load_music_album
   end
 
