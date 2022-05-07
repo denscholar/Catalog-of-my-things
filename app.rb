@@ -158,10 +158,10 @@ class App
   end
 
   def add_new_game
-    print "It is a multiplayer game [Enter answer in format true / false]: "
+    print 'It is a multiplayer game [Enter answer in format true / false]: '
     multiplayer = gets.chomp.to_s.casecmp('true').zero?
 
-    print "Please, enter the last date the game was played (mm-dd-yyyy)"
+    print 'Please, enter the last date the game was played (mm-dd-yyyy)'
     last_played_at, = gets.chomp
 
     print 'Published Date [Enter date in format (mm-dd-yyyy)]: '
@@ -178,7 +178,7 @@ class App
     publish_date = gets.chomp
     return unless publish_date
 
-    print "This album is on Spotify [Enter answer in format true / false] :"
+    print 'This album is on Spotify [Enter answer in format true / false] :'
     on_spotify = gets.chomp.to_s.casecmp('true').zero?
 
     @music_albums.push(MusicAlbum.new(publish_date, on_spotify))
