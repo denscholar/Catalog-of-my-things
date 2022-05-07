@@ -126,9 +126,6 @@ class App
     end
   end
 
-
-
-
   def list_genres
     puts 'There are no genres yet!' if @genres.empty?
     @genres.each do |genre|
@@ -136,6 +133,23 @@ class App
     end
   end
 
+  def add_new_album
+    print 'Published Date [Enter date in format (mm-dd-yyy)]: '
+    publish_date = gets.chomp
+    return unless publish_date
 
+    print "This album is on Spotify [Enter answer in format true / false: "
+    on_spotify = gets.chomp.to_s.casecmp('true').zero?
 
+    @music_albums.push(MusicAlbum.new(publish_date, on_spotify))
+    save_music_album
+    puts 'Album created successfully'
+  end
+
+  def list_albums
+    puts 'There are no genres yet!' if @music_albums.empty?
+    @music_albums.each do |album|
+      puts "Publish date: #{album.publish_date}, On Spotify : #{album.on_spotify}}"
+    end
+  end
 end
