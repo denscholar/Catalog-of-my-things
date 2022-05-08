@@ -1,0 +1,63 @@
+CREATE TABLE label(
+  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  title VARCHAR(50),
+  color VARCHAR(50)
+);
+
+CREATE TABLE author (
+	id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	first_name VARCHAR(20),
+	last_name VARCHAR(20)
+);
+
+CREATE TABLE genre(
+  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(50)
+);
+
+CREATE TABLE item (
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    published_date DATE,
+    archived BOOLEAN,
+    genre_id INT,
+    author_id INT,
+    label_id INT,
+    FOREIGN KEY (genre_id) REFERENCES genre(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (author_id) REFERENCES author(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (label_id) REFERENCES label(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE book(
+  id INT PRIMARY KEY,
+  published_date DATE,
+  publisher VARCHAR(100),
+  cover_state VARCHAR(4),
+  genre_id INT,
+  author_id INT,
+  label_id INT,
+  FOREIGN KEY (genre_id) REFERENCES genre(id) ON DELETE SET NULL ON UPDATE CASCADE,
+  FOREIGN KEY (author_id) REFERENCES author(id) ON DELETE SET NULL ON UPDATE CASCADE,
+  FOREIGN KEY (label_id) REFERENCES label(id) ON DELETE SET NULL ON UPDATE CASCADE,
+	FOREIGN KEY (id) REFERENCES item (id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+CREATE TABLE game(
+	id INT NOT NULL,
+	last_played_at DATE,
+	multiplayer BOOLEAN,
+	FOREIGN KEY (id) REFERENCES item (id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+CREATE TABLE music_album(
+  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  genre_id INT,
+  publish_date DATE,
+  archived BOOLEAN,
+  on_spotify BOOLEAN,
+  item_id INT NOT NULL,
+
+  CONSTRAINT fk_item
+      FOREIGN KEY (item_id)
+      REFERENCES item (id)
+      ON DELETE CASCADE
+);
